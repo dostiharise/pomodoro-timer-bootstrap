@@ -9,7 +9,7 @@
 
         <!-- Bootstrap -->
         <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
-        
+
         <link href="css/pomodoro-timer.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,28 +30,33 @@
                         <button id="longButton" class="btn btn-default" type="submit" onclick="onLongTimer()">Long Break</button>
                     </span>
                 </h2>
-            </div> 
+            </div>
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    <div class="timer-time">
+                    <div class="timer-time timer-container">
+                      <div class="timer-time-set timer-box" id="currentTime">
                         <span id="hoursValue">00</span><span>:</span><span id="minutesValue">00</span><span>:</span><span id="secondsValue">00</span>
+                      </div>
+                        <div class="timer-time-set timer-box" id="nextTime">
+                          <span id="hoursNext">00</span><span>:</span><span id="minutesNext">00</span><span>:</span><span id="secondsNext">00</span>
+                        </div>
                     </div>
-                    <div>               
+                    <div>
                         <button id="restartButton" class="btn btn-warning btn-lg" type="submit" onclick="onResetTimer()">
                             <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Reset
                         </button>
                         <button id="startButton" class="btn btn-primary btn-lg" type="submit" onclick="onStartTimer()">
                             <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
-                        </button>                
+                        </button>
                         <button id="stopButton" class="btn btn-danger btn-lg" type="submit" onclick="onStopTimer()">
                             <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-                        </button> 
+                        </button>
                     </div>
                         </div>
 
             </div>
         </div>
-       
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery/jquery-1.11.3.js"></script>
@@ -59,4 +64,4 @@
         <script src="js/bootstrap/bootstrap.js"></script>
          <script src="js/pomodoro-timer.js"></script>
     </body>
-</html> 
+</html>

@@ -89,6 +89,7 @@ function resetTimer(){
 
 function renderTimer(){
 
+
     var deltaTime=remainingTime;
 
     var hoursValue=Math.floor(deltaTime/(1000*60*60));
@@ -102,11 +103,6 @@ function renderTimer(){
     animateTime(hoursValue, minutesValue, secondsValue);
 };
 
-function displayTime(hoursValue, minutesValue, secondsValue){
-    $('#hoursValue').text(formatTime(hoursValue));
-    $('#minutesValue').text(formatTime(minutesValue));
-    $('#secondsValue').text(formatTime(secondsValue));
-}
 
 function animateTime(hoursValue, minutesValue, secondsValue) {
 
@@ -119,44 +115,37 @@ function animateTime(hoursValue, minutesValue, secondsValue) {
     $('#minutesNext').css('top', '0em');
     $('#secondsNext').css('top', '0em');
 
-    var oldHoursString = $('#hoursValue').text();
-    var oldMinutesString = $('#minutesValue').text();
-    var oldSecondsString = $('#secondsValue').text();
+    var oldHoursString = $('#hoursNext').text();
+    var oldMinutesString = $('#minutesNext').text();
+    var oldSecondsString = $('#secondsNext').text();
 
     var hoursString = formatTime(hoursValue);
     var minutesString = formatTime(minutesValue);
     var secondsString = formatTime(secondsValue);
 
+    $('#hoursValue').text(oldHoursString);
+    $('#minutesValue').text(oldMinutesString);
+    $('#secondsValue').text(oldSecondsString);
+
+    $('#hoursNext').text(hoursString);
+    $('#minutesNext').text(minutesString);
+    $('#secondsNext').text(secondsString);
 
     // set and animate
     if(oldHoursString !== hoursString) {
-
-      $('#hoursNext').text(hoursString);
-
       $('#hoursValue').animate({top: '-=1em'});
-      $('#hoursNext').animate({top: '-=1em'}, function() {
-        $('#hoursValue').text(hoursString);
-      });
+      $('#hoursNext').animate({top: '-=1em'});
     }
 
   if(oldMinutesString !== minutesString) {
-
-    $('#minutesNext').text(minutesString);
-
     $('#minutesValue').animate({top: '-=1em'});
-    $('#minutesNext').animate({top: '-=1em'}, function() {
-      $('#minutesValue').text(minutesString);
-    });
+    $('#minutesNext').animate({top: '-=1em'});
   }
 
 
   if(oldSecondsString !== secondsString) {
-    $('#secondsNext').text(secondsString);
-
     $('#secondsValue').animate({top: '-=1em'});
-    $('#secondsNext').animate({top: '-=1em'}, function() {
-      $('#secondsValue').text(secondsString);
-    });
+    $('#secondsNext').animate({top: '-=1em'});
   }
 }
 
@@ -170,9 +159,10 @@ function formatTime(intergerValue){
 function decrementTimer(){
 
     remainingTime-=(1*1000);
-    renderTimer();
 
     if(remainingTime<1000){
         onStopTimer();
     }
+
+    renderTimer();
 }

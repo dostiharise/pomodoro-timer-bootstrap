@@ -6,6 +6,8 @@ var remainingTime;
 
 var countdownHandle;
 
+var audio = new Audio('beep.mp3');
+
 $(document).ready(function() {
   onPomodoroTimer();
 });
@@ -62,6 +64,8 @@ function onStartTimer(){
 
 function onStopTimer(){
   stopTimer();
+    audio.play();
+
 };
 
 function onResetTimer(){
@@ -77,6 +81,8 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(countdownHandle);
+
+
 }
 
 function resetTimer(){
